@@ -1,0 +1,108 @@
+.imageBasket{
+    max-width: 350px;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.basket{
+    max-width: 373px;
+    padding: 20px;
+    border: 1px solid #a4a4a4;
+    border-radius: 12px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.basketList{
+    width: 100%;
+    position: absolute;
+    top: 110px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.categoryBasket{
+    font-size: 18px;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nameBasket{
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+.descriptionBasket{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonBasketAdd{
+    cursor: pointer;
+    padding: 15px 10px 15px 10px;
+    font-size: 18px;
+    color: white;
+    border-radius: 12px;
+    border-width: 0;
+    background-color: #11850a;
+    margin-top: auto;
+}
+.buttonBasketAdd:hover{
+    background-color: #125b0d;
+
+}
+
+.buttonBasketReview{
+    cursor: pointer;
+    padding: 15px 10px 15px 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+    border-radius: 12px;
+    border-width: 0;
+    background-color: #0f6fa2;
+
+}
+.buttonBasketReview:hover{
+    background-color: #15557c;
+
+}
+
+.countList{
+    margin-top: auto;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.count{
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.countButton{
+   color: white;
+    background-color: #4ad740;
+    border-width: 0;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.countButton:hover{
+    background-color: #337a2e;
+}

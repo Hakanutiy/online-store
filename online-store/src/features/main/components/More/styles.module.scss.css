@@ -1,0 +1,61 @@
+.more{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageMore{
+max-width: 700px;
+    max-height: 700px;
+
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+
+
+.categoryMore{
+    font-size: 18px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nameMore{
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+.descriptionMore{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonMoreAdd{
+    cursor: pointer;
+    padding: 15px 10px 15px 10px;
+    font-size: 18px;
+    color: white;
+    border-radius: 12px;
+    border-width: 0;
+    background-color: #11850a;
+    margin-top: auto;
+}
+.buttonMoreAdd:hover{
+    background-color: #125b0d;
+
+}
+

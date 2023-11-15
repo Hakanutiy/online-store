@@ -1,6 +1,5 @@
 import {fetcher} from "@/lib/api";
-import {useQuery} from "vue-query";
-
+import {useQuery} from '@tanstack/vue-query'
 const getProducts = () => {
     return fetcher('/products', {method: 'get'})
 }

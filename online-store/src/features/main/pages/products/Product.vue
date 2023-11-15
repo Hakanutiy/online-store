@@ -1,7 +1,7 @@
 <template>
 <div class="productList">
-  <div class="product" v-for="data in products" :key="data.id">
-    <img class="imageProduct" :src="data.image" alt="image product"/>
+  <div class="product" v-for="data in data" :key="data.id">
+    <img class="imageProduct" :src="'http://localhost:5000/'+data.image" alt="image product"/>
     <div class="categoryProduct">{{data.category}}</div>
     <div class="nameProduct"> {{data.name}}</div>
     <div class="descriptionProduct"> {{data.description}}</div>
@@ -29,8 +29,7 @@ import {useGetProducts} from "@/features/main/api/useGetProducts";
 
 const store = useStore()
 const selectedProductId = ref(null)
-const { data } = useGetProducts({ config: {}})
-console.log(data)
+const {  data } = useGetProducts({ config: {}})
 
 function onClickProduct (id){
   store.commit('setModalId', 'openProduct')

@@ -1,4 +1,6 @@
 <script setup>
+import {useAuthLogin} from "@/features/main/api/useAuthLogin";
+
 
 </script>
 

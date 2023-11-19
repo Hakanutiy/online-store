@@ -1,5 +1,6 @@
-import Product from "./Product.js";
-import ProductServices from "./ProductServices.js";
+import Product from "../models/Product.js";
+import ProductServices from "../services/ProductServices.js";
+
 
 class ProductController {
     async create (req, res){

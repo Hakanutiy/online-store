@@ -7,11 +7,11 @@
    </div>
   <div class="title">Online-Store</div>
     <div class="navbar_link">
-      <router-link class="link" to="/">Главная</router-link>
+      <router-link class="link" to="/product">Главная</router-link>
       <router-link class="link" to="/support">Поддержка</router-link>
       <router-link class="link" to="/profile">Профиль</router-link>
       <router-link class="link" to="/basket">Корзина  <div class="basket_num" v-if="basket.length > 0" >{{basket.length}}</div></router-link>
-
+      <router-link class="link" v-if="roles === 'ADMIN'" to="/admin">Admin Panel</router-link>
     </div>
 </div>
 </template>
@@ -22,8 +22,8 @@ import {useStore} from "vuex";
 import {computed, ref} from "vue";
 const store = useStore()
 const basket = computed(() => store.state.basket.basket);
-
-
+const token = localStorage.getItem("authToken")
+const roles = localStorage.getItem("role")
 </script>
 
 <style>

@@ -6,7 +6,7 @@
     <div class="nameProduct"> {{data.name}}</div>
     <div class="descriptionProduct"> {{data.description}}</div>
     <my-button :btn-type="'add'" @click="addBasketProduct(data)" class="buttonProductAdd">Добавить в Корзину</my-button>
-    <button @click="onClickProduct(data.id)" class="buttonProductReview">Просмотр</button>
+    <button @click="onClickProduct(data._id)" class="buttonProductReview">Просмотр</button>
 
 
   </div>

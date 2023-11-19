@@ -17,7 +17,6 @@ import {useStore} from "vuex";
 import Modal from "@/features/main/components/Modal.vue";
 const props =  defineProps ({modalId: {type: String, required: true}})
 const store = useStore()
-console.log(store.state.modal.currentModalId)
 
 
 

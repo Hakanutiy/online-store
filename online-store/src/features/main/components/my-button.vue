@@ -5,7 +5,6 @@
 <script setup>
 const props = defineProps({ btnType: {type: String, required: true}})
 
-console.log(props.btnType)
 </script>
 
 <style scoped>

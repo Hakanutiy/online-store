@@ -1,4 +1,4 @@
-import Product from "./Product.js";
+import Product from "../models/Product.js";
 import FileServices from "./fileServices.js";
 
 class ProductServices{

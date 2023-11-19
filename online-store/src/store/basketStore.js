@@ -6,7 +6,7 @@ export default {
     mutations: {
         setAddBasket(state, product) {
             // проверочка есть ли такой товар в корзине или нет
-            const existingProduct = state.basket.find(p => p.id === product.id);
+            const existingProduct = state.basket.find(p => p._id === product._id);
 
             if (!existingProduct) {
                return  state.basket = [...state.basket, product];
@@ -17,7 +17,7 @@ export default {
         },
         setRemoveProduct(state, product) {
             // тут я сделал фильтрацию, чтобы оставил все объекты, кроме того, который совпадает с продукт.
-            return state.basket = state.basket.filter(id => id.id !== product.id);
+            return state.basket = state.basket.filter(id => id._id !== product._id);
         }
     }
 }

@@ -8,6 +8,7 @@ import {useStore} from "vuex";
 import {watch} from "vue";
 import AdminPanel from "@/features/main/pages/admin/AdminPanel.vue";
 import CreateProduct from "@/features/main/pages/admin/productsListen/CreateProduct.vue";
+import DeleteProduct from "@/features/main/pages/admin/productsListen/DeleteProduct.vue";
 
 
 
@@ -44,6 +45,12 @@ const routes = [
                 path: 'admin/create',
                 name: 'createProducts',
                 component: CreateProduct,
+                meta: { requiresAuth: true },
+            },
+            {
+                path: 'admin/delete',
+                name: 'deleteProducts',
+                component: DeleteProduct,
                 meta: { requiresAuth: true },
             },
         ],

@@ -26,7 +26,7 @@ const token = localStorage.getItem("authToken")
 const roles = localStorage.getItem("role")
 </script>
 
-<style>
+<style scoped>
 @import  './styles.module.scss';
 
 </style>

@@ -7,6 +7,7 @@ import Register from "@/features/main/pages/auth/Register.vue";
 import {useStore} from "vuex";
 import {watch} from "vue";
 import AdminPanel from "@/features/main/pages/admin/AdminPanel.vue";
+import CreateProduct from "@/features/main/pages/admin/productsListen/CreateProduct.vue";
 
 
 
@@ -31,13 +32,24 @@ const routes = [
                 meta: { requiresAuth: true },
             },
             {
-                path: 'admin',
+                path: '/admin',
                 name: 'admin',
                 component: AdminPanel,
+                meta: { requiresAuth: true },
+                children: [
+
+                ],
+            },
+            {
+                path: 'admin/create',
+                name: 'createProducts',
+                component: CreateProduct,
                 meta: { requiresAuth: true },
             },
         ],
     },
+
+
     {
         path: '/auth',
         redirect: '/auth/login',

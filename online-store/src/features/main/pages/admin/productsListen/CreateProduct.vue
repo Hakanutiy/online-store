@@ -9,7 +9,10 @@
       <input v-model="product.category" type="text" id="category" required>
 
       <label class="text" for="description">Описание:</label>
-      <textarea v-model="product.description" id="description" required></textarea>
+      <input v-model="product.description" id="description" required>
+
+      <label class="text" for="description">Цена:</label>
+      <input v-model="product.price" id="price" required>
 
       <div>
         <label class="text" for="image">Изображение:</label>
@@ -39,7 +42,8 @@ const product = ref({
   name: '',
   category: '',
   description: '',
-  image: ''
+  image: '',
+  price: ''
 });
 const submitForm = () => {
   const formData = new FormData();
@@ -47,6 +51,8 @@ const submitForm = () => {
   formData.append('description', product.value.description);
   formData.append('category', product.value.category);
   formData.append('image', product.value.image);
+  formData.append('price', product.value.price);
+
 
   try {
      createProduct.mutate(formData);

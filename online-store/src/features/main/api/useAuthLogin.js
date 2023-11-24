@@ -9,6 +9,7 @@ const login = (data) => {
 
 export const useAuthLogin = ({ config }) => {
     const store = useStore();
+    const addToast = store.state.notification.addCreate
     const router = useRouter();
 
     return useMutation({
@@ -18,6 +19,19 @@ export const useAuthLogin = ({ config }) => {
             localStorage.setItem('authToken', data.token)
             localStorage.setItem('role', data.roles);
             router.push('/product');
+            store.commit('addCreate', {
+                title: 'Success',
+                message: 'Успех!',
+                type:'success'
+            })
+        },
+        onError:(error) => {
+            store.commit('addCreate', {
+                title: 'Error',
+                message: error.message,
+                type: 'error'
+            })
+
         }
 
 

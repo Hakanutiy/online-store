@@ -4,6 +4,7 @@
     <img class="imageProduct" :src="'http://localhost:5000/'+data.image" alt="image product"/>
     <div class="categoryProduct">{{data.category}}</div>
     <div class="nameProduct"> {{data.name}}</div>
+    <div class="descriptionProduct"> {{data.price.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}} ₸</div>
     <div class="descriptionProduct"> {{data.description}}</div>
     <my-button :btn-type="'add'" @click="addBasketProduct(data)" class="buttonProductAdd">Добавить в Корзину</my-button>
     <my-button @click="onClickProduct(data._id)" class="buttonProductReview" btn-type="info">Просмотр</my-button>

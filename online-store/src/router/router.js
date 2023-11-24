@@ -17,6 +17,7 @@ const routes = [
     {
         path: '/',
         component: Main,
+        redirect: '/product',
         name: 'Main',
         children: [
 
@@ -90,7 +91,7 @@ router.beforeEach((to, from, next) => {
     console.log(isAuthenticated)
 
     if (to.meta.requiresAuth && !isAuthenticated) {
-        debugger
+
         next({ path: '/auth' });
     } else {
         next();

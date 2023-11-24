@@ -16,16 +16,14 @@ const props = defineProps({ btnType: {type: String, required: true}})
   border-radius: 12px;
   border-width: 0;
 }
-.buttonProductAdd:hover{
-}
 
 .add {
-  background-color: #11850a;
+  background-color: #11850a !important;
 
 }
 
 .add:hover {
-  background-color: #125b0d;
+  background-color: #125b0d !important;
 
 }
 

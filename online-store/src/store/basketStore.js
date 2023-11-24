@@ -1,4 +1,6 @@
 // тут я решил создать корзину, чтобы не играться с пропсами. буду добавлять новые значения. в массив который будет подключен в корзине
+import {useStore} from "vuex";
+
 export default {
     state:() => ({
         basket: []
@@ -7,8 +9,8 @@ export default {
         setAddBasket(state, product) {
             // проверочка есть ли такой товар в корзине или нет
             const existingProduct = state.basket.find(p => p._id === product._id);
-
             if (!existingProduct) {
+
                return  state.basket = [...state.basket, product];
             }
         },

@@ -11,7 +11,7 @@
         <div class="count">{{ countProducts[item._id] || '1'  }}</div>
         <button @click="incrementCount(item._id)" class="countButton">+</button>
       </div>
-      <my-button>Купить</my-button>
+      <my-button :btn-type="'add'">Купить</my-button>
     </div>
   </div>
 </template>

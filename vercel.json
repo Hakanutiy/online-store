@@ -6,7 +6,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/online-store/$1"
+      "dest": "/dist/$1" 
     }
   ]
 }

@@ -2,7 +2,7 @@ import { Request } from "./request"
 import {mapSearchParams} from "./map-search-params.js";
 
 
- const request = new Request("http://localhost:5000")
+ const request = new Request("https://six-experience-production.up.railway.app/")
 
 export async function fetcher(
     url,

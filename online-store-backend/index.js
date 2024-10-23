@@ -11,7 +11,7 @@ const DB_URL =`mongodb+srv://thehaknutiy:Hacklolqw12@cluster0.imbsujn.mongodb.ne
 const app = express()
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: '*',
     optionsSuccessStatus: 200
 };
 
@@ -38,4 +38,6 @@ async function startApp(){
     }
 }
 
-startApp()
+ await startApp()
+
+export default app

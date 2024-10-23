@@ -5,7 +5,7 @@ import router from "./router/router.js";
 import cors  from 'cors'
 import authRouter from "./router/authRouter.js";
 
-const PORT = 5000
+const PORT = 3000
 const DB_URL =`mongodb+srv://thehaknutiy:Hacklolqw12@cluster0.imbsujn.mongodb.net/?retryWrites=true&w=majority`
 
 const app = express()

@@ -1,13 +1,12 @@
 {
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/online-store-backend/index.js" 
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/online-store/$1"  
-      }
-    ]
-  }
-  
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/online-store-backend/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/online-store/$1"
+    }
+  ]
+}

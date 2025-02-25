@@ -11,10 +11,10 @@ const DB_URL =`mongodb+srv://thehaknutiy:Hacklolqw12@cluster0.imbsujn.mongodb.ne
 const app = express()
 
 const corsOptions = {
-    origin: ['http://example.com', 'http://localhost:5173'], // Укажите конкретные источники
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Разрешенные HTTP-методы
-    allowedHeaders: ['Content-Type', 'Authorization'], // Разрешенные заголовки
-    credentials: true, // Разрешить передачу куки и токенов
+    origin: "http://localhost:5173", // Разрешаем запросы только с этого адреса
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Если используешь куки или JWT
 };
 
 app.use(cors(corsOptions));

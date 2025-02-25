@@ -10,16 +10,22 @@ export default {
             // проверочка есть ли такой товар в корзине или нет
             const existingProduct = state.basket.find(p => p._id === product._id);
             if (!existingProduct) {
-
-               return  state.basket = [...state.basket, product];
+                const item = {
+                    ...product,
+                    quantity: 1,
+                    selectedColor: 'black'
+                }
+                state.basket.push(item)
             }
         },
-        setRemoveBasket(state) {
-            return state.basket = []
+        'basket/updateQuantity'(state, payload) {
+            state.basket[payload.index].quantity = payload.quantity
         },
-        setRemoveProduct(state, product) {
-            // тут я сделал фильтрацию, чтобы оставил все объекты, кроме того, который совпадает с продукт.
-            return state.basket = state.basket.filter(id => id._id !== product._id);
+        'basket/setColor'(state, payload) {
+            state.basket[payload.index].selectedColor = payload.color
+        },
+        'basket/removeItem'(state, index) {
+            state.basket.splice(index, 1)
         }
     }
 }

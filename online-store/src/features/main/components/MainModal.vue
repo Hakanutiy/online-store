@@ -6,7 +6,7 @@
 
       </slot>
     </Modal>
-      <div v-else>XYZ</div>
+      <div v-else></div>
     {{store.state.modal.currentModalId}}
   </Teleport>
 </template>

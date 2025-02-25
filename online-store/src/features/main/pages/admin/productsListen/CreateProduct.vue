@@ -1,88 +1,84 @@
 <template>
-<div class="productOption">
-  <div class="createProduct">
-    <form @submit.prevent="submitForm">
-      <label class="text" for="productName">Имя товара:</label>
-      <input v-model="product.name" type="text" id="productName" required>
+  <div class="productOption">
+    <div class="createProduct">
+      <form @submit.prevent="submitForm">
+        <label class="text" for="productName">Имя товара:</label>
+        <input v-model="product.name" type="text" id="productName" required>
 
-      <label class="text" for="category">Категория:</label>
-      <input v-model="product.category" type="text" id="category" required>
+        <label class="text" for="category">Категория:</label>
+        <input v-model="product.category" type="text" id="category" required>
 
-      <label class="text" for="description">Описание:</label>
-      <input v-model="product.description" id="description" required>
+        <label class="text" for="description">Описание:</label>
+        <input v-model="product.description" id="description" required>
 
-      <label class="text" for="description">Цена:</label>
-      <input v-model="product.price" id="price" required>
+        <label class="text" for="price">Цена:</label>
+        <input v-model="product.price" type="text" id="price" required>
 
-      <div>
-        <label class="text" for="image">Изображение:</label>
-        <input class="text" type="file" id="image" accept="image/*" @change="handleFileChange">
+        <div>
+          <label class="text" for="image">Изображение:</label>
+          <input class="text" type="file" id="image" accept="image/*" @change="handleFileChange">
 
-        <div v-if="thumbnail">
-          <img :src="thumbnail" alt="Product Image" class="image-preview">
+          <div v-if="thumbnail">
+            <img :src="thumbnail" alt="Product Image" class="image-preview">
+          </div>
         </div>
-      </div>
-      <button type="submit">Сохранить</button>
-    </form>
 
-
+        <button type="submit">Сохранить</button>
+      </form>
+    </div>
   </div>
-
-</div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import {useCreateProducts} from "@/features/main/api/useCreateProduct";
-import {generateThumbnail} from "@/features/main/components/Image";
+import { ref } from "vue";
+import { useCreateProducts } from "@/features/main/api/useCreateProduct";
+import { generateThumbnail } from "@/features/main/components/Image";
 
+const createProduct = useCreateProducts({ config: {} });
 
-const createProduct = useCreateProducts({config:{}})
 const product = ref({
-  name: '',
-  category: '',
-  description: '',
-  image: '',
-  price: ''
+  name: "",
+  category: "",
+  description: "",
+  price: "",
 });
-const submitForm = () => {
-  const formData = new FormData();
-  formData.append('name', product.value.name);
-  formData.append('description', product.value.description);
-  formData.append('category', product.value.category);
-  formData.append('image', product.value.image);
-  formData.append('price', product.value.price);
+const imageFile = ref(null); // Храним файл отдельно
+const thumbnail = ref(null);
 
+const handleFileChange = (event) => {
+  const file = event.target.files[0];
+  console.log("Выбранный файл:", file);
+  if (file) {
+    imageFile.value = file; // Сохраняем сам файл
+
+    generateThumbnail(file, thumbnail); // Создаём превью
+  }
+};
+
+const submitForm = async () => {
+  const formData = new FormData();
+  formData.append("name", product.value.name);
+  formData.append("description", product.value.description);
+  formData.append("category", product.value.category);
+  formData.append("price", product.value.price);
+
+  if (imageFile.value) {
+    formData.append("image", imageFile.value); // Передаём сам файл
+  }
 
   try {
-     createProduct.mutate(formData);
+    await createProduct.mutate(formData);
 
-    product.value = {
-      name: '',
-      category: '',
-      description: '',
-      image: ''
-    };
+    // Очищаем форму
+    product.value = { name: "", category: "", description: "", price: "" };
+    imageFile.value = null;
     thumbnail.value = null;
   } catch (error) {
-    console.error(error);
+    console.error("Ошибка при отправке формы:", error);
   }
-};
-
-const thumbnail = ref(null);
-const handleFileChange = (event) => {
-  if (event.target.files[0]){
-    const file = event.target.files[0];
-    product.value.image = file
-    if (file) {
-      generateThumbnail(file, thumbnail);
-    }
-  }
-
-
-
 };
 </script>
+
 <style scoped>
 
 .createProduct{

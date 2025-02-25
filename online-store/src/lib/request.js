@@ -6,14 +6,14 @@ export class Request {
     }
 
    async get(url){
-        return await axios.get(this.baseUrl + url, {headers: {'withCredentials': true}});
+        return await axios.get(this.baseUrl + url, {headers: {'ngrok-skip-browser-warning': true,}});
     }
 
     async post(url, data){
-        return await axios.post(this.baseUrl + url, data, {headers: {'withCredentials': true}});
+        return await axios.post(this.baseUrl + url, data, {headers: {'ngrok-skip-browser-warning': true,}});
     }
     async delete(url, data){
-        return await axios.delete(this.baseUrl + url, data, {headers: {'withCredentials': true}});
+        return await axios.delete(this.baseUrl + url, data, {headers: {'ngrok-skip-browser-warning': true,}});
     }
 }
 

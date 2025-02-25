@@ -5,7 +5,6 @@
     <div>
       <router-link class="link" to="/admin/create">Добавить товар</router-link>
       <router-link class="link" to="/admin/delete">Удалить товар</router-link>
-      <router-link class="link" to="/admin/products">Все товары</router-link>
     </div>
   </div>
   <div class="adminContent">

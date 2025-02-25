@@ -8,8 +8,6 @@
   <div class="title">Online-Store</div>
     <div class="navbar_link">
       <router-link class="link" to="/product">Главная</router-link>
-      <router-link class="link" to="/support">Поддержка</router-link>
-      <router-link class="link" to="/profile">Профиль</router-link>
       <router-link class="link" to="/basket">Корзина  <div class="basket_num" v-if="basket.length > 0" >{{basket.length}}</div></router-link>
       <router-link class="link" v-if="roles === 'ADMIN'" to="/admin">Admin Panel</router-link>
     </div>

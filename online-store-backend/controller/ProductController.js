@@ -3,16 +3,16 @@ import ProductServices from "../services/ProductServices.js";
 
 
 class ProductController {
-    async create (req, res){
+    async create(req, res) {
         try {
-            const product = await ProductServices.create(req.body, req.files.image)
-            console.log(req.files)
-            res.json(product)
+            console.log(req.files);
+            console.log(req.body);
 
-        }
-        catch (e) {
-            res.status(500).json(e)
-            console.log(e)
+            const product = await ProductServices.create(req.body, req.files.image); // Передаем объект с файлом
+            res.json(product);
+        } catch (e) {
+            res.status(500).json(e);
+            console.log(e);
         }
     }
     async getAll(req, res){

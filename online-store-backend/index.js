@@ -1,21 +1,15 @@
 import express from 'express';
 import mongoose from "mongoose";
-import fileUpload from 'express-fileupload'
 import router from "./router/router.js";
 import cors  from 'cors'
 import authRouter from "./router/authRouter.js";
+import fileUpload from "express-fileupload";
 
 const PORT = 3000
 const DB_URL =`mongodb+srv://thehaknutiy:Hacklolqw12@cluster0.imbsujn.mongodb.net/?retryWrites=true&w=majority`
 
 const app = express()
 
-const corsOptions = {
-    origin: "http://localhost:5173", // Разрешаем запросы только с этого адреса
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Если используешь куки или JWT
-};
 
 app.use(cors());
 
@@ -28,7 +22,7 @@ app.use(fileUpload({}))
 app.use(router)
 app.use('/auth', authRouter)
 
-
+app.use('/uploads', express.static('uploads'));
 
 
 

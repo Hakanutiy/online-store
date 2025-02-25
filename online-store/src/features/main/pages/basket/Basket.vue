@@ -1,56 +1,109 @@
 <template>
-  <div class="basketList">
-    <div class="basket" v-for="item in basket" :key="item._id">
-      <img class="imageBasket" :src="'http://localhost:5000/'+item.image" alt="image product"/>
-      <div class="categoryBasket">{{ item.category }}</div>
-      <div class="nameBasket">{{ item.name }}</div>
-      <div class="descriptionBasket">{{ item.description }}</div>
+  <div class="basket-container">
+    <h1 class="basket-title">Корзина ({{ totalItems }})</h1>
 
-      <div class="countList">
-        <button @click="decrementCount(item._id)" class="countButton">-</button>
-        <div class="count">{{ countProducts[item._id] || '1'  }}</div>
-        <button @click="incrementCount(item._id)" class="countButton">+</button>
+    <div class="basket-list">
+      <div class="basket-item" v-for="(item, index) in basket" :key="item._id">
+        <div class="item-image">
+          <img :src="'http://localhost:3000/'+item.image" alt="image product"/>
+        </div>
+
+        <div class="item-details">
+          <div class="item-header">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <button class="remove-btn" @click="removeFromBasket(index)">×</button>
+          </div>
+
+          <p class="item-category">{{ item.category }}</p>
+          <p class="item-description">{{ item.description }}</p>
+
+          <div class="color-selector">
+            <span>Цвет:</span>
+            <div
+                v-for="color in colors"
+                :key="color"
+                class="color-option"
+                :class="{
+                'selected': item.selectedColor === color,
+                [color]: true
+              }"
+                @click="setColor(index, color)"
+            ></div>
+          </div>
+
+          <div class="quantity-controls">
+            <button
+                class="quantity-btn"
+                :disabled="item.quantity === 1"
+                @click="updateQuantity(index, -1)"
+            >-</button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button
+                class="quantity-btn"
+                @click="updateQuantity(index, 1)"
+            >+</button>
+          </div>
+        </div>
+
+        <div class="item-pricing">
+          <p class="price-total">
+            {{ (item.price * item.quantity).toLocaleString('ru-RU') }} ₸
+          </p>
+          <p class="price-unit">
+            {{ item.price.toLocaleString('ru-RU') }} ₸/шт
+          </p>
+        </div>
       </div>
-      <my-button :btn-type="'add'">Купить</my-button>
+    </div>
+
+    <div class="summary">
+      <div class="total-amount">
+        Итого: {{ totalPrice.toLocaleString('ru-RU') }} ₸
+      </div>
+      <my-button btn-type="add" class="checkout-btn">
+        Оформить заказ
+      </my-button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useStore } from "vuex";
-import {reactive, ref} from "vue";
-import MyButton from "@/features/main/components/my-button.vue";
-import logoIcon from "@/features/main/assets/logoIcon.vue";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import MyButton from "@/features/main/components/my-button.vue"
 
-const store = useStore();
-const basket = store.state.basket.basket;
+const store = useStore()
+const colors = ['black', 'gray', 'white', 'pink', 'yellow', 'red']
 
-const countProducts = reactive({
-
+const basket = computed(() => {
+  return store.state.basket.basket.map(item => ({
+    ...item,
+    selectedColor: item.selectedColor || 'black',
+    quantity: item.quantity || 1
+  }))
 })
 
-console.log(countProducts)
+const totalItems = computed(() => {
+  return basket.value.reduce((sum, item) => sum + item.quantity, 0)
+})
 
-function incrementCount(item) {
+const totalPrice = computed(() => {
+  return basket.value.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+})
 
-  console.log(countProducts[item])
-
-
-  if(countProducts[item]){
-    countProducts[item] ++
-  }
-  else{
-    countProducts[item] = 1
+function updateQuantity(index, delta) {
+  const newQuantity = basket.value[index].quantity + delta
+  if (newQuantity > 0) {
+    store.commit('basket/updateQuantity', { index, quantity: newQuantity })
   }
 }
 
-function decrementCount(item) {
-  if(countProducts[item]){
-    countProducts[item] --
-  }
-  else{
-    countProducts[item] = 1
-  }
+function setColor(index, color) {
+  store.commit('basket/setColor', { index, color })
+}
+
+function removeFromBasket(index) {
+  store.commit('basket/removeItem', index)
 }
 </script>
 

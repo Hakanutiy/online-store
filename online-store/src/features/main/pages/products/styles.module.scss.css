@@ -7,6 +7,25 @@
     object-position: center center;
 }
 
+.filters{
+    display: flex;
+    gap: 10px;
+    padding: 120px 10px 10px 10px;
+}
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.category-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
 .product{
     max-width: 373px;
     padding: 20px;
@@ -18,7 +37,7 @@
 }
 .productList{
     position: absolute;
-    top: 110px;
+    top: 182px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

@@ -1,7 +1,7 @@
 <template>
 <div class="productList">
   <div class="product" v-for="data in data" :key="data.id">
-    <img class="imageProduct" :src="'http://localhost:5000/'+data.image" alt="image product"/>
+    <img class="imageProduct" :src="'https://six-experience-production.up.railway.app/'+data.image" alt="image product"/>
     <div class="categoryProduct">{{data.category}}</div>
     <div class="nameProduct"> {{data.name}}</div>
     <div class="descriptionProduct"> {{data.price.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}} ₸</div>

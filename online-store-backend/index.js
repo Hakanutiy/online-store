@@ -17,10 +17,10 @@ const corsOptions = {
     credentials: true, // Если используешь куки или JWT
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Обработка preflight-запросов
-app.options('*', cors(corsOptions));
+app.options('*', cors());
 app.use(express.json())
 app.use(express.static('static'))
 

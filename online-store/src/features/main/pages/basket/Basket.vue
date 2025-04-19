@@ -60,7 +60,7 @@
       <div class="total-amount">
         Итого: {{ totalPrice.toLocaleString('ru-RU') }} ₸
       </div>
-      <my-button btn-type="add" class="checkout-btn">
+      <my-button btn-type="add" class="checkout-btn" @click="checkout">
         Оформить заказ
       </my-button>
     </div>
@@ -74,6 +74,31 @@ import MyButton from "@/features/main/components/my-button.vue"
 
 const store = useStore()
 const colors = ['black', 'gray', 'white', 'pink', 'yellow', 'red']
+
+const colorNames = {
+  black: 'Черный',
+  gray: 'Серый',
+  white: 'Белый',
+  pink: 'Розовый',
+  yellow: 'Желтый',
+  red: 'Красный'
+}
+function checkout() {
+  const phoneNumber = '77088600257' // Замените на реальный номер
+  const message = generateWhatsAppMessage()
+  const encodedMessage = encodeURIComponent(message)
+  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
+}
+
+function generateWhatsAppMessage() {
+  const itemsText = basket.value.map((item, index) => {
+    return `${index + 1}. ${item.name} (${colorNames[item.selectedColor]}) - ${
+        item.quantity
+    } шт. - ${(item.price * item.quantity).toLocaleString('ru-RU')} ₸`
+  }).join('\n')
+
+  return `*Новый заказ с сайта*\n\nТовары:\n${itemsText}\n\nИтого: ${totalPrice.value.toLocaleString('ru-RU')} ₸`
+}
 
 const basket = computed(() => {
   return store.state.basket.basket.map(item => ({

@@ -9,6 +9,7 @@ import {watch} from "vue";
 import AdminPanel from "@/features/main/pages/admin/AdminPanel.vue";
 import CreateProduct from "@/features/main/pages/admin/productsListen/CreateProduct.vue";
 import DeleteProduct from "@/features/main/pages/admin/productsListen/DeleteProduct.vue";
+import Analytics from "@/features/main/pages/admin/productsListen/Analytics.vue";
 
 
 
@@ -52,6 +53,12 @@ const routes = [
                 path: 'admin/delete',
                 name: 'deleteProducts',
                 component: DeleteProduct,
+                meta: { requiresAuth: true },
+            },
+            {
+                path: 'admin/analytics',
+                name: 'Analytics',
+                component: Analytics,
                 meta: { requiresAuth: true },
             },
         ],

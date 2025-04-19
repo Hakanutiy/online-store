@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="adminContent">
-    <div class="adminTitle">Список возможностей с пользователями(скоро)</div>
+    <router-link class="link" to="/admin/analytics">Аналитика</router-link>
   </div>
 </div>
 </template>
